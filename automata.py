@@ -64,3 +64,4 @@ for i in range(0,len(grid)):
 img.putdata(pixelGrid,0,0)
 img = img.resize((width*5,height*5))
 img.save('img.png')
+img.show()
