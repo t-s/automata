@@ -38,7 +38,7 @@ else:
 		for bit in ruleInput:
 			rule.append(int(bit))
 	else:
-		ruleInput = bin(int(ruleInput)).lstrip("0b")
+		ruleInput = bin(int(ruleInput)).lstrip("0b") #bin() adds 0b to string
 		print ruleInput
 		for digit in ruleInput:
 			rule.append(int(digit))
