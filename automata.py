@@ -21,7 +21,8 @@ def calcCell(ruleString,position,prevRow):
 
 if (len(sys.argv) < 3):
 	print 'Syntax: automata.py [initial state] [rule string] [iterations]'
-	print 'The intial state and the rule string should be binary strings.'
+	print 'The intial state should be a binary string.'
+	print 'The rule string can be a binary string or a decimal up to 256.'
 	print 'Using default values.'
 	print ''
 
@@ -29,11 +30,18 @@ if (len(sys.argv) < 3):
 	rule = [0,1,1,1,1,0,1,0]
 	iters = 15
 
-else:	
+else:
+	ruleInput = sys.argv[2]	
 	for letter in sys.argv[1]:
 		row.append(int(letter))
-	for bit in sys.argv[2]:
-		rule.append(int(bit))
+	if((len(ruleInput) > 3)):
+		for bit in ruleInput:
+			rule.append(int(bit))
+	else:
+		ruleInput = bin(int(ruleInput)).lstrip("0b")
+		print ruleInput
+		for digit in ruleInput:
+			rule.append(int(digit))
 	iters = int(sys.argv[3])
 
 width = len(row)
@@ -62,6 +70,6 @@ for i in range(0,len(grid)):
 			pixelGrid.append((255,255,255))
 
 img.putdata(pixelGrid,0,0)
-img = img.resize((width*5,height*5))
+img = img.resize((width*15,height*15))
 img.save('img.png')
 img.show()
