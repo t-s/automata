@@ -28,7 +28,7 @@ if (len(sys.argv) < 3):
 
 	row = [0,0,0,0,1,0,0,0,0]
 	rule = [0,1,1,1,1,0,1,0]
-	iters = 15
+	iters = 50
 
 else:
 	ruleInput = sys.argv[2]	
@@ -39,10 +39,16 @@ else:
 			rule.append(int(bit))
 	else:
 		ruleInput = bin(int(ruleInput)).lstrip("0b") #bin() adds 0b to string
-		print ruleInput
+		while(len(ruleInput) < 8):
+			ruleInput = "0" + str(ruleInput)
 		for digit in ruleInput:
 			rule.append(int(digit))
-	iters = int(sys.argv[3])
+	try:
+		iters = int(sys.argv[3])
+	except IndexError:
+		print "You did not define a number of iterations."
+		print "Using default value of 50 iterations."
+		iters = 50
 
 width = len(row)
 height = iters+1
@@ -57,8 +63,8 @@ for i in range(iters): #i being the number of rows in cell grid
 	grid.append(tempRow)
 	tempRow = []
 
-for eachRow in grid:
-	print eachRow
+#for eachRow in grid:
+#	print eachRow
 
 pixelGrid = []
 pixelRow = []
