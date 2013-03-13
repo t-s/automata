@@ -13,7 +13,7 @@ length = 0
 # if COLOR is set to 1, random colors will be used instead of black.
 # just for fun. perhaps I can tie color determination into the automata rules somehow.
 # set back to 0 for less fun.
-COLOR = 1
+COLOR = False
 
 # calculates cell from rule string, position of new cell, and previous row
 def calcCell(ruleString,position,prevRow):
