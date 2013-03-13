@@ -29,9 +29,9 @@ def calcCell(ruleString,position,prevRow):
 
 # if color mode is active, return a random number that will make cell look colorful
 def hue():
-	# we want the range to not approach 255, because then it could potentially
-	# produce white when subtracted from 255, which is how hue() is used
-	return COLOR * r(0,240)
+	# we want to return neither 0 nor 255, because then it could potentially
+	# produce black or white when subtracted from 255
+	return COLOR * r(15,240)
 
 if __name__ == "__main__":
 
